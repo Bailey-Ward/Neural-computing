@@ -139,14 +139,22 @@ end
 
 % Plot results
 figure;
-subplot(2,1,1);
+
+subplot(3,1,1);
+plot(t, Iapp * 1e3, 'LineWidth', 1.5);
+xlabel('Time (s)');
+ylabel('Membrane Potential (mV)');
+title('Membrane Potential');
+grid on;
+
+subplot(3,1,2);
 plot(t, V, 'LineWidth', 1.5);
 xlabel('Time (ms)');
 ylabel('Membrane Potential (mV)');
 title('Membrane Potential Dynamics');
 grid on;
 
-subplot(2,1,2);
+subplot(3,1,3);
 plot(t, m, 'b', 'LineWidth', 1.5); hold on;
 plot(t, h, 'r', 'LineWidth', 1.5);
 plot(t, n, 'g', 'LineWidth', 1.5);

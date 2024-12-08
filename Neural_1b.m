@@ -1,11 +1,11 @@
 % Parameters
-EL = -75e-3;            % Resting potential (mV)
+El = -75e-3;            % Resting potential (mV)
 V_th = -50e-3;           % Threshold potential (mV)
 V_reset = -80e-3;        % Reset potential (mV)
 Rm = 100e6;             % Membrane resistance (Ohms)
 Cm = 100e-12;           % Membrane capacitance (pF)
 Ek = -80e-3;            % Adaptation reversal potential (mV)
-DeltaG_SRA = 1e-9;      % Increment of adaptation conductance (nS)
+delta_G = 1e-9;      % Increment of adaptation conductance (nS)
 tsra = 200e-3;          % Adaptation time constant (ms)
 
 % Simulation parameters
@@ -44,7 +44,7 @@ for j = 1:length(Iapp)
     
         V(i+1) = V(i) + dt * ( (El-V(i))/Rm + G_sra(i)*(Ek - V(i)) + Iapp(j))/Cm;
 
-        G_sra(i+1) = G_sra(i) - dt*(G_sra(i)/t_sra);
+        G_sra(i+1) = G_sra(i) - dt*(G_sra(i)/tsra);
     end
 
     
@@ -71,9 +71,12 @@ plot(Iapp*1e12, finalrate,'-o', 'DisplayName', 'Initial f');
 ISIindices = find(initialrate);
 plot(1e12*Iapp(ISIindices),initialrate(ISIindices),'x', 'DisplayName', 'Steady-state f');
 
+ISIindices = find(singlespike);
+plot(1e12*Iapp(ISIindices),0*singlespike(ISIindices),'x', 'DisplayName', 'Single Spike');
+
 xlabel('Applied Current (nA)');
 ylabel('Firing rate (Hz)');
-legend('show');
+legend('show','Location','northwest');
 title('f-I Curve for LIF Model with Adaptation');
 grid on;
 

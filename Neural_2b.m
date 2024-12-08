@@ -79,7 +79,7 @@ plot(1e12*Iapp(ISIindices),0*singlespike(ISIindices),'x', 'DisplayName', 'Initia
 
 xlabel('Applied Current (nA)');
 ylabel('Firing rate (Hz)');
-legend('show');
+legend('show','Location','northwest');
 title('f-I Curve for AELIF Model with Adaptation');
 grid on;
 
