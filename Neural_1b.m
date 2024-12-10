@@ -66,13 +66,13 @@ end
 
 hold on;
 
-plot(Iapp*1e12, finalrate,'-o', 'DisplayName', 'Initial f');
+plot(Iapp*1e12, finalrate,'-o', 'DisplayName', 'Initial f','LineWidth', 1.5);
 
 ISIindices = find(initialrate);
-plot(1e12*Iapp(ISIindices),initialrate(ISIindices),'x', 'DisplayName', 'Steady-state f');
+plot(1e12*Iapp(ISIindices),initialrate(ISIindices),'-x', 'DisplayName', 'Steady-state f','LineWidth', 1.5);
 
 ISIindices = find(singlespike);
-plot(1e12*Iapp(ISIindices),0*singlespike(ISIindices),'x', 'DisplayName', 'Single Spike');
+plot(1e12*Iapp(ISIindices),0*singlespike(ISIindices),'*', 'DisplayName', 'Single Spike','LineWidth', 1.5);
 
 xlabel('Applied Current (nA)');
 ylabel('Firing rate (Hz)');

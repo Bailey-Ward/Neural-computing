@@ -43,6 +43,7 @@ end
 figure;
 subplot(3,1,1);
 plot(t, Iapp , 'LineWidth', 1.5);
+axis([0 1.5 0 700e-12 ])
 xlabel('Time (s)');
 ylabel('I_{app} (pA)');
 title('Input Current');
@@ -50,6 +51,7 @@ grid on;
 
 subplot(3,1,2);
 plot(t, V , 'LineWidth', 1.5);
+axis([0 1.5 -0.085 -0.04])
 xlabel('Time (s)');
 ylabel('Membrane Potential (mV)');
 title('Membrane Potential');

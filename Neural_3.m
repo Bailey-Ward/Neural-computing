@@ -1,6 +1,6 @@
 clear
 
-part = '6';         % Options are '2', '3', '4', '5', '6' for section 2 questions
+part = '2';         % Options are '2', '3', '4', '5', '6' for section 2 questions
 
 dt = 2e-8;          % Time step
 tmax=0.35;          % Maximum simulation time
@@ -35,7 +35,7 @@ switch part;
     case '3'
         Npulses = 10;       % 10 pulses
         Ie = 0.22e-9;       % applied current for each pulse
-        pulsesep = 5e-3;   % time between pulses
+        pulsesep = 18e-3;   % time between pulses
     case '4'
         Npulses = 10;       % 10 pulses
         Ibase = 0.6e-9;     % large baseline current 
@@ -56,10 +56,9 @@ switch part;
         Ie = 1e-9;          % pulsed current
         V0 = -0.065;
     otherwise
-        fprintf('Variable part must be b-f')
+        fprintf('Variable part must be 2-6')
 end
 
-% Set up the applied current vector
 Iapp=Ibase*ones(size(t));       % Initialize current vector at baseline 
 
 for pulse = 1:Npulses;          
@@ -129,11 +128,11 @@ for i = 2:length(t);
     
     I_K(i) = Gk*n(i)*n(i)*n(i)*n(i)*(Ek-V(i-1)); % total potassium current
     
-    I_L(i) = Gleak*(El-V(i-1));    % Leak current is straightforward
+    I_L(i) = Gleak*(El-V(i-1));    % Leak current 
     
-    Itot(i) = I_L(i)+I_Na(i)+I_K(i)+Iapp(i); % total current is sum of leak + active channels + applied current
+    Itot(i) = I_L(i)+I_Na(i)+I_K(i)+Iapp(i); % total current 
     
-    V(i) = V(i-1) + Itot(i)*dt/Cm;        % Update the membrane potential, V.
+    V(i) = V(i-1) + Itot(i)*dt/Cm;        % Update V.
     
 end
 

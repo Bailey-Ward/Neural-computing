@@ -40,7 +40,6 @@ for j = 1:length(Iapp)
         if ( V(i) > V_th )         
             V(i) = V_reset;         
             I_SRA(i) = I_SRA(i) + b;   
-            %neuron_fires(j) = neuron_fires(j) + 1;
             spikes(i) = 1;
         end
     
@@ -69,13 +68,13 @@ end
 
 hold on;
 
-plot(Iapp*1e12, finalrate,'-o', 'DisplayName', 'Initial f');
+plot(Iapp*1e12, finalrate,'-o', 'DisplayName', 'Initial f','LineWidth', 1.5);
 
 ISIindices = find(initialrate);
-plot(1e12*Iapp(ISIindices),initialrate(ISIindices),'x', 'DisplayName', 'Steady-state f');
+plot(1e12*Iapp(ISIindices),initialrate(ISIindices),'-x', 'DisplayName', 'Steady-state f','LineWidth', 1.5);
 
 ISIindices = find(singlespike);
-plot(1e12*Iapp(ISIindices),0*singlespike(ISIindices),'x', 'DisplayName', 'Initial f');
+plot(1e12*Iapp(ISIindices),0*singlespike(ISIindices),'*', 'DisplayName', 'Initial f','LineWidth', 1.5);
 
 xlabel('Applied Current (nA)');
 ylabel('Firing rate (Hz)');
