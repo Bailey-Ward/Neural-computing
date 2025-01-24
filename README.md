@@ -1,0 +1,1 @@
+This repository contains the MATLAB code used to solve the Neural Computing assignment, which required me to model and simulate various neuroscience models such as the Leaky-Integrate and Fire (LIF), Adaptive Exponential Leaky-Integrate and Fire (AELIF) and the Hodgkin-Huxley models.
